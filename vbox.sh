@@ -7,6 +7,8 @@
 
 VBOX_MANAGE=/usr/bin/VBoxManage
 VBOX_HEADLESS=/usr/bin/VBoxHeadless
+TRIES_BEFORE_TIMEOUT=10
+SLEEP_TIME=5
 
 function displayhelp()
 {
@@ -37,7 +39,7 @@ function shutdown()
   VMUUIDTEMPFILE=/tmp/$$.vmUUID.tmp
   echo $VM > $VMUUIDTEMPFILE
   while (true) ; 
-  do sleep 5; 
+  do sleep $SLEEP_TIME; 
     VMUUID=$(cat $VMUUIDTEMPFILE)
     COUNTER=$[$(cat $TEMPFILE) + 1]
     echo $COUNTER > $TEMPFILE
@@ -50,9 +52,10 @@ function shutdown()
         echo `date` " " `whoami` " Waiting for process "$COMMAND" "$VMUUID" ("$COUNTER")..."
     fi
     found1=$( ps -ef | grep -v grep | grep $COMMAND | grep $VMUUID ); 
-# TIMEOUT AFTER 120 SECONDS
-    if [ $COUNTER -gt 24 ] 
+
+    if [ $COUNTER -gt $TRIES_BEFORE_TIMEOUT ] 
     then
+        $VBOX_MANAGE controlvm poweroff
         echo `date` " " `whoami` " Warning: Timeout. Forced VM power off"
         echo `date` " " `whoami` " "$COUNTER"  "$VM
         echo `date` " " `whoami` " PID FOUND: "$found1
@@ -92,7 +95,7 @@ case $1 in
 -o|--off ) 
     VM=$2; shutdown $VM;;
 -l|--list ) 
-    VBOX_MANAGE list vms
+    $VBOX_MANAGE list vms
     ;;
 -h|--help ) 
     displayhelp;;
