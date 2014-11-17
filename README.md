@@ -27,5 +27,8 @@ If you want stop the VM (and the  you should type the following command:
     sudo launchctl unload -w /Library/LaunchDaemons/virtualbox.machine.plist
 
 The VM will be started machine everytime MAC OS X boots.
-Set into `virtualbox.machine.plist` the field `RunAtLoad` to `true` if you want that the VM starts automatically every time your mac os x boots
+Set into `virtualbox.machine.plist` the field `RunAtLoad` to `false` if you don't want that the VM starts automatically every time your mac os x boots.
+When RunAtLoad is set to false, after the load you must start and stop the VM using the following command:
 
+    sudo launchctl start VM.VIRTUALBOX.NAME
+    sudo launchctl stop VM.VIRTUALBOX.NAME

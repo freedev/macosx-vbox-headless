@@ -31,11 +31,11 @@ Tips:
 </array>
 
 <!--
-set RunAtLoad true if you want that virtual machine starts 
+set RunAtLoad false if you don't want that virtual machine starts 
 automatically every time your mac os x boots
 -->
 <key>RunAtLoad</key>
-<false/>
+<true/>
 
 <key>UserName</key>
 <string>USERNAME</string>
