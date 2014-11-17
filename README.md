@@ -1,7 +1,8 @@
 macosx-vbox-headless
 ====================
 
-A MAC OS X configuration helpful to start and stop a virtual box headless machine.
+Running/Stopping headless VMs during boot/shutdown under Mac OS X
+AKA A MAC OS X configuration helpful to start and stop headless VMs.
 
 ## Install
 
