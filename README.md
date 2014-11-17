@@ -1,7 +1,7 @@
 macosx-vbox-headless
 ====================
 
-Running/Stopping headless VMs during boot/shutdown under Mac OS X
+Running/Stopping headless VMs during boot/shutdown under Mac OS X,
 AKA A MAC OS X configuration helpful to start and stop headless VMs.
 
 ## Install
@@ -27,5 +27,5 @@ If you want stop the VM (and the  you should type the following command:
     sudo launchctl unload -w /Library/LaunchDaemons/virtualbox.machine.plist
 
 The VM will be started machine everytime MAC OS X boots.
-Set into `virtualbox.machine.plist` the field `RunAtLoad` to `true` if you want that virtual machine starts automatically every time your mac os x boots
+Set into `virtualbox.machine.plist` the field `RunAtLoad` to `true` if you want that the VM starts automatically every time your mac os x boots
 
